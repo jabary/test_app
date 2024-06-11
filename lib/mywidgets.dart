@@ -3,8 +3,9 @@ import 'package:test_app/models/movie.dart';
 
 class MovieItem extends StatelessWidget {
   final Movie movie;
+  final VoidCallback setFavorite;
 
-  const MovieItem({required this.movie});
+  const MovieItem({required this.movie, required this.setFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,10 @@ class MovieItem extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(movie.description),
+              IconButton(
+                  onPressed: setFavorite,
+                  icon:
+                      Icon(movie.isFavorite ? Icons.star : Icons.star_border)),
               Container(
                 alignment: Alignment.bottomRight,
                 child: Text(movie.rating),
