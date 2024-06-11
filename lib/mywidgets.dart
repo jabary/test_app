@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/models/movie.dart';
 
 class MovieItem extends StatelessWidget {
-  final String name;
-  final String description;
-  final String rating;
-  final String image;
+  final Movie movie;
 
-  const MovieItem(
-      {super.key,
-      required this.name,
-      required this.description,
-      required this.rating,
-      required this.image});
+  const MovieItem({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +12,19 @@ class MovieItem extends StatelessWidget {
       height: 120,
       child: Card(
         child: Row(children: [
-          Image.network(image),
+          Image.network(movie.image),
           Expanded(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                name,
+                movie.name,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text(description),
+              Text(movie.description),
               Container(
                 alignment: Alignment.bottomRight,
-                child: Text(rating),
+                child: Text(movie.rating),
               )
             ],
           ))
